@@ -1,0 +1,36 @@
+ Internet of Things ➤ IoT Hub-note Hostname
+hotname: mscitiothub.azure-devices.net
+connection string:HostName=mscitiothub.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey=hAdv5w2U4mFMBBXHYbDxQae56LnchCfrb7FweqHX3DU=
+get Connection String
+ Settings ➤ Shared Access Policies ➤ iothubowner
+ Connection String—Primary Key. Note it down.
+
+Creating Device Identities
+create project AddDeviceToHub
+Microsoft.Azure.Devices  
+
+Add req. reference
+
+Create new app simulateddevice
+Microsoft.Azure.Devices.Client
+
+
+Create notification 
+New ➤ Web+
+Mobile ➤ Notification Hubs. Create a new hub
+
+notificationHubConnectionString, 
+Access Policies ➤DefaultFullSharedAccessSignature 
+and copy the connection string
+
+Google Cloud Messaging (GCM) API key
+https://firebase.google.com 
+
+
+Microsoft.ServiceBus.Messaging (for reading  device-to-Cloud messages), 
+Microsoft.Azure.Devices (for sending Cloud-to-device 
+messages)
+Microsoft.Azure.NotificationHubs (for sending push notifications)
+
+
+To be able to test the solution backend, you will need the SimulatedDevice project to be running simultaneously

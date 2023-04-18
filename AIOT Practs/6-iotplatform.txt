@@ -1,0 +1,52 @@
+sudo apt-get install openssh-server
+sudo systemctl enable ssh
+sudo systemctl start ssh
+ufw app list
+ufw allow OpenSSH
+ufw enable
+ufw status
+
+Installing Apache
+sudo apt update
+sudo apt install apache2
+sudo ufw app list
+sudo ufw app info "Apache Full"
+
+///////
+Installing MySQL
+ apt install mysql-server
+  mysql
+  SELECT user,authentication_string,plugin,host FROM mysql.
+user WHERE user="root"
+
+////////
+Installing PHP
+sudo apt install php libapache2-mod-php php-mysql
+sudo nano /etc/apache2/mods-enabled/dir.conf
+
+<IfModule mod_dir.c>
+ put it first index.php
+
+</IfModule>
+
+
+ systemctl restart apache2
+ sudo  nano /var/www/html/test.php
+  <?php
+ echo("Hi...PHP is working !");
+?>
+
+
+Installing Node.js and Node-RED
+
+sudo apt update
+sudo apt install nodejs
+sudo apt install npm
+bash <(curl -sL https://raw.githubusercontent.com/node-red/
+linux-installers/master/deb/update-nodejs-and-nodered)
+
+nodejs -v
+
+npm install -g --unsafe-perm node-red
+ufw allow 1880/tcp
+node-red

@@ -1,0 +1,37 @@
+#sudo apt-get install libatlas-base-dev
+import requests
+import matplotlib.image as mpimg
+import matplotlib.pyplot as plt
+import json
+import numpy
+from PIL import Image
+from io import BytesIO
+subscription_key="5823cf75b4f7f7d26"
+endpoint="https://mscit-cv1.cognitiveservices.azure.com/"
+analyze_url = endpoint + "vision/v3.1/analyze"
+image1='image2.jpg'
+# Set image_url to the URL of an image that you want to analyze.
+
+
+headers = {'Ocp-Apim-Subscription-Key': subscription_key}
+params = {'visualFeatures': 'Categories,Description,Color'}
+
+files = {'media': open(image1, 'rb')}
+response = requests.post(analyze_url, headers=headers,
+                         params=params, files=files)
+response.raise_for_status()
+
+# The 'analysis' object contains various fields that describe the image. The most
+# relevant caption for the image is obtained from the 'description' property.
+analysis = response.json()
+print(json.dumps(response.json()))
+image_caption = analysis["description"]["captions"][0]["text"].capitalize()
+
+# Display the image and overlay it with the caption.
+
+#image = Image.open(BytesIO(requests.get(image_url).content))
+img = mpimg.imread(image1)
+imgplot = plt.imshow(img)
+plt.axis("off")
+_ = plt.title(image_caption, size="x-large", y=-0.1)
+plt.show()

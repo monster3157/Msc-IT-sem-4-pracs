@@ -1,0 +1,50 @@
+https://snapcraft.io/install/geth/raspbian
+sudo apt update
+sudo apt install snapd
+sudo reboot
+sudo snap install core
+sudo snap install --candidate geth
+geth
+mkdir myblockchain
+cd myblockchain
+sudo nano genesis.json
+{
+  "config": {
+    "chainId": 10,
+    "homesteadBlock": 0,
+    "eip155Block": 0,
+    "eip158Block": 0,
+    "eip150Block": 0,
+    "eip150Hash": "0x0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "alloc": {},
+  "coinbase": "0x0000000000000000000000000000000000000000",
+  "difficulty": "0x02000000",
+  "extraData": "",
+  "gasLimit": "0x2fefd8",
+  "nonce": "0x0000000000000042",
+  "mixhash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "parentHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "timestamp": "0x00"
+}
+
+
+geth --datadir TestChain init genesis.json
+geth --datadir TestChain --networkid 1234 
+
+cd myblockchain
+open terminal 2:
+
+2-sudo geth attach TestChain/geth.ipc
+
+3-personal.newAccount("123456")
+4-eth.getBalance(eth.accounts[0])
+5-miner.start()
+6-miner.setEtherbase(eth.accounts[0])
+7-admin.nodeInfo.enode
+8-admin.addPeer("enode://689e37d4d61e6ae8eada0580e8d31c4d697bbaa396c9a3836094fabf9a37934702f96abb02f7cf41009ac1138cc65ad934bd0683447abd239c9b4f985324dd2a@127.0.0.1:30303?discport=0"
+8-admin.addPeer(output of 7)
+9-eth.getBalance("0x5da9e5a96e291abf5657fb4ef31a26748ad53f8b")
+if ether balance is 0 wait for 10-20minutes for mining process to get complete
+
+https://github.com/mitucsaki/Raspberry-Pi-Geth

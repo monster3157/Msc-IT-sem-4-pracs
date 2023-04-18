@@ -1,0 +1,16 @@
+https://snapcraft.io/install/docker/ubuntu
+
+sudo apt update
+sudo apt install snapd
+sudo snap install core
+sudo snap install docker
+sudo apt-get update
+sudo apt-get upgrade
+sudo groupadd docker
+sudo docker ps -a
+docker run hello-world
+sudo usermod -aG docker $USER
+groups
+if docker is not listed
+newgrp docker
+docker run hello-world
